@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhncmuu6sju0q"]
+
+[ext_resource type="PackedScene" uid="uid://co0pkwmt1xvmc" path="res://Budgeting Home/Budget/Budget Header/budget_header.tscn" id="1_q5tfm"]
+[ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_svlsv"]
+[ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget/Budget Body/budget_section.tscn" id="2_ddl43"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget.cs" id="2_e43bu"]
+[ext_resource type="PackedScene" uid="uid://dwhlexftyxoa0" path="res://Budgeting Home/Budget/Budget Body/add_group.tscn" id="3_pnmff"]
+
+[sub_resource type="Theme" id="Theme_u63iy"]
+ScrollContainer/styles/panel = ExtResource("1_svlsv")
+
+[node name="Budget" type="Panel"]
+custom_minimum_size = Vector2(531, 608)
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_svlsv")
+script = ExtResource("2_e43bu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Budget" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Budget Header" parent="MarginContainer/HBoxContainer/Budget" instance=ExtResource("1_q5tfm")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Budget"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_u63iy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Budget/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Budget Section" parent="MarginContainer/HBoxContainer/Budget/ScrollContainer/VBoxContainer" instance=ExtResource("2_ddl43")]
+layout_mode = 2
+
+[node name="Add Group" parent="MarginContainer/HBoxContainer/Budget/ScrollContainer/VBoxContainer" instance=ExtResource("3_pnmff")]
+custom_minimum_size = Vector2(175, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2

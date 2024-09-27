@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwhlexftyxoa0"]
+
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/AddGroup.cs" id="1_gsih6"]
+[ext_resource type="Theme" uid="uid://crxochahcdi8y" path="res://Styles/add_group.tres" id="2_dh81w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpk41"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.577008, 0.577008, 0.577008, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Add Group" type="Panel"]
+custom_minimum_size = Vector2(425, 75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gpk41")
+script = ExtResource("1_gsih6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -26.5
+offset_right = 145.0
+offset_bottom = 26.5
+grow_vertical = 2
+theme_override_constants/margin_left = 33
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("2_dh81w")
+text = "+ Add Group"
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="OnAddGroupPressed"]

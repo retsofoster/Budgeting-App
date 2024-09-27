@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://crxochahcdi8y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4wric"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/colors/font_color = Color(0.228209, 0.447827, 0.247813, 1)
+Button/colors/font_focus_color = Color(0.228209, 0.447827, 0.247813, 1)
+Button/colors/font_pressed_color = Color(0.228209, 0.447827, 0.247813, 1)
+Button/font_sizes/font_size = 16
+Button/styles/focus = SubResource("StyleBoxFlat_4wric")
+Button/styles/normal = SubResource("StyleBoxFlat_4wric")
+Button/styles/pressed = SubResource("StyleBoxFlat_4wric")

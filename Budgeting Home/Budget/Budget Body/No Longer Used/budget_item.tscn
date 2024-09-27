@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc25ys7qgypw8"]
+
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/No Longer Used/BudgetItem.cs" id="1_erstc"]
+[ext_resource type="Theme" uid="uid://ds6pclesvt2ke" path="res://Styles/line_edit.tres" id="2_lm8ue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsc0d"]
+bg_color = Color(0.856067, 0.856067, 0.856067, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_buaf1"]
+bg_color = Color(0.873298, 0.873298, 0.873298, 1)
+border_width_bottom = 2
+border_color = Color(0.470076, 0.470076, 0.470076, 1)
+
+[node name="Budget Item" type="HBoxContainer"]
+script = ExtResource("1_erstc")
+
+[node name="Item Name" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("2_lm8ue")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vsc0d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_buaf1")
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Planned" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("2_lm8ue")
+
+[node name="Spacer2" type="Control" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Remaining" type="Label" parent="."]
+layout_mode = 2
+
+[connection signal="text_submitted" from="Item Name" to="." method="OnBudgetItemNameSubmitted"]

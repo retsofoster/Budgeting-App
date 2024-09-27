@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ds6pclesvt2ke"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsc0d"]
+bg_color = Color(0.856067, 0.856067, 0.856067, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opdko"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+LineEdit/colors/caret_color = Color(0.292189, 0.292191, 0.292191, 1)
+LineEdit/colors/font_color = Color(0.180005, 0.180005, 0.180005, 1)
+LineEdit/styles/focus = SubResource("StyleBoxFlat_vsc0d")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_opdko")
