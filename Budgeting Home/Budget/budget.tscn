@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://co0pkwmt1xvmc" path="res://Budgeting Home/Budget/Budget Header/budget_header.tscn" id="1_q5tfm"]
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_svlsv"]
 [ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget/Budget Body/budget_section.tscn" id="2_ddl43"]
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget.cs" id="2_e43bu"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget/BudgetScreen.cs" id="2_e43bu"]
 [ext_resource type="PackedScene" uid="uid://dwhlexftyxoa0" path="res://Budgeting Home/Budget/Budget Body/add_group.tscn" id="3_pnmff"]
 
 [sub_resource type="Theme" id="Theme_u63iy"]
