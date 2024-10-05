@@ -3,9 +3,12 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
-public partial class BudgetSection : Panel
+public partial class BudgetCategory : Panel
 {
 	[Signal] public delegate void AddIncomeEventHandler(string source, float amount, string category);
+	[Export] public Label remaining;
+	[Export] public LineEdit planned;
+	[Export] public LineEdit itemName;
 	
 	public override void _Ready()
 	{
@@ -17,13 +20,12 @@ public partial class BudgetSection : Panel
 	{
 	}
 
-	public void OnAddIncomePressed()
+	public void OnAddSubCategoryPressed()
 	{
 		//Node parent = GetNode("MarginContainer/HBoxContainer/VBoxContainer");
-		AddChildAtLocation("res://Budgeting Home/Budget/Budget Body/item_name.tscn","MarginContainer/HBoxContainer/VBoxContainer", 4);
-		AddChildAtLocation("res://Budgeting Home/Budget/Budget Body/planned.tscn","MarginContainer/HBoxContainer/VBoxContainer2", 3);
-		AddChildRemainingAtLocation("res://Budgeting Home/Budget/Budget Body/remaining.tscn","MarginContainer/HBoxContainer/VBoxContainer3", 3);
-		
+		AddChildAtLocation(CategorySubtitle.GetScenePath(),"MarginContainer/HBoxContainer/VBoxContainer", 4);
+		AddChildAtLocation(PlannedAmount.GetScenePath(),"MarginContainer/HBoxContainer/VBoxContainer2", 3);
+		AddChildRemainingAtLocation(RemainingAmount.GetScenePath(),"MarginContainer/HBoxContainer/VBoxContainer3", 3);		
 	}
 	public void AddChildAtLocation(string childPath, string parentPath, int maxChildren)
 	{
@@ -37,7 +39,6 @@ public partial class BudgetSection : Panel
 			location = parent.GetChildCount() - 2;
 			childScene.Name = "Budget Item" +location.ToString();
 			parent.MoveChild(childScene, location);
-			
 		}
 		else
 		{
@@ -63,6 +64,10 @@ public partial class BudgetSection : Panel
 		{
 			GD.Print("Group is Full!");
 		}
+	}
+	public void OnItemNameTextSubmitted(string income)
+	{
+		
 	}
 }
 

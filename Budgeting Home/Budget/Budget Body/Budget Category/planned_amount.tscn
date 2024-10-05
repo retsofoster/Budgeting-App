@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsn1cxargu60v"]
+
+[ext_resource type="Theme" uid="uid://ds6pclesvt2ke" path="res://Styles/line_edit.tres" id="1_qkwmh"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/PlannedAmount.cs" id="2_jyap0"]
+
+[node name="Planned Amount" type="LineEdit"]
+custom_minimum_size = Vector2(100, 0)
+theme = ExtResource("1_qkwmh")
+text = "0"
+alignment = 2
+script = ExtResource("2_jyap0")

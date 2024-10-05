@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://co0pkwmt1xvmc" path="res://Budgeting Home/Budget/Budget Header/budget_header.tscn" id="1_q5tfm"]
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_svlsv"]
-[ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget/Budget Body/budget_section.tscn" id="2_ddl43"]
-[ext_resource type="Script" path="res://Budgeting Home/Budget/BudgetScreen.cs" id="2_e43bu"]
+[ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget/Budget Body/Budget Category/budget_category.tscn" id="2_ddl43"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget/BudgetItems.cs" id="2_e43bu"]
 [ext_resource type="PackedScene" uid="uid://dwhlexftyxoa0" path="res://Budgeting Home/Budget/Budget Body/add_group.tscn" id="3_pnmff"]
 
 [sub_resource type="Theme" id="Theme_u63iy"]
@@ -14,6 +14,8 @@ custom_minimum_size = Vector2(531, 608)
 size_flags_horizontal = 3
 theme_override_styles/panel = ExtResource("1_svlsv")
 script = ExtResource("2_e43bu")
+budgetSection = ExtResource("2_ddl43")
+addGroup1 = ExtResource("3_pnmff")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -50,12 +52,3 @@ theme = SubResource("Theme_u63iy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Budget Section" parent="MarginContainer/HBoxContainer/Budget/ScrollContainer/VBoxContainer" instance=ExtResource("2_ddl43")]
-layout_mode = 2
-
-[node name="Add Group" parent="MarginContainer/HBoxContainer/Budget/ScrollContainer/VBoxContainer" instance=ExtResource("3_pnmff")]
-custom_minimum_size = Vector2(175, 75)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 2
