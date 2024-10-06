@@ -1,7 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc25ys7qgypw8"]
+[gd_scene load_steps=5 format=3 uid="uid://cbsa6s4oea8ax"]
 
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/No Longer Used/BudgetItem.cs" id="1_erstc"]
-[ext_resource type="Theme" uid="uid://ds6pclesvt2ke" path="res://Styles/line_edit.tres" id="2_lm8ue"]
+[ext_resource type="Theme" uid="uid://ds6pclesvt2ke" path="res://Styles/line_edit.tres" id="1_0rn1i"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_g8l5c"]
+script/source = "using Godot;
+using System;
+
+public partial class BudgetItem : HBoxContainer
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+	public void OnBudgetItemNameSubmitted(String name)
+	{
+		
+	}
+}
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vsc0d"]
 bg_color = Color(0.856067, 0.856067, 0.856067, 1)
@@ -16,12 +37,12 @@ border_width_bottom = 2
 border_color = Color(0.470076, 0.470076, 0.470076, 1)
 
 [node name="Budget Item" type="HBoxContainer"]
-script = ExtResource("1_erstc")
+script = SubResource("CSharpScript_g8l5c")
 
 [node name="Item Name" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme = ExtResource("2_lm8ue")
+theme = ExtResource("1_0rn1i")
 theme_override_styles/focus = SubResource("StyleBoxFlat_vsc0d")
 theme_override_styles/normal = SubResource("StyleBoxFlat_buaf1")
 
@@ -32,7 +53,7 @@ size_flags_horizontal = 3
 [node name="Planned" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme = ExtResource("2_lm8ue")
+theme = ExtResource("1_0rn1i")
 
 [node name="Spacer2" type="Control" parent="."]
 custom_minimum_size = Vector2(100, 0)

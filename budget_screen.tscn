@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://BudgetScreen.cs" id="1_ap1oj"]
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_kve1u"]
-[ext_resource type="PackedScene" uid="uid://dhncmuu6sju0q" path="res://Budgeting Home/Budget/budget.tscn" id="2_ukmm7"]
+[ext_resource type="PackedScene" uid="uid://dhncmuu6sju0q" path="res://Budgeting Home/Budget/budget_panel.tscn" id="2_ukmm7"]
 
 [node name="BudgetScreen" type="MarginContainer"]
 anchors_preset = 15

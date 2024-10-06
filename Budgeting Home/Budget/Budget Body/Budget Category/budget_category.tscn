@@ -1,26 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbrv3hgcp7udb"]
+[gd_scene load_steps=6 format=3 uid="uid://dbrv3hgcp7udb"]
 
 [ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/BudgetCategory.cs" id="1_7bvol"]
-[ext_resource type="PackedScene" uid="uid://bq3s5vxqybgsv" path="res://Budgeting Home/Budget/Budget Body/Budget Category/category_subtitle.tscn" id="2_6jxo2"]
+[ext_resource type="StyleBox" uid="uid://cg4mvk6uj77yw" path="res://Styles/budget_category.tres" id="1_datvm"]
+[ext_resource type="PackedScene" uid="uid://dfaqsk60cno6f" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Header/received.tscn" id="2_5my8k"]
+[ext_resource type="PackedScene" uid="uid://da8txd71n5oad" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/sub_category.tscn" id="2_lu3o2"]
 [ext_resource type="Theme" uid="uid://crxochahcdi8y" path="res://Styles/add_group.tres" id="3_651ga"]
-[ext_resource type="PackedScene" uid="uid://bsn1cxargu60v" path="res://Budgeting Home/Budget/Budget Body/Budget Category/planned_amount.tscn" id="4_7ar1f"]
-[ext_resource type="PackedScene" uid="uid://dgljpkq2isdgq" path="res://Budgeting Home/Budget/Budget Body/Budget Category/remaining_amount.tscn" id="5_k6rej"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bok5o"]
-bg_color = Color(0.929715, 0.929715, 0.929715, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[node name="Budget Category" type="Panel" node_paths=PackedStringArray("remaining", "planned", "itemName")]
+[node name="Budget Category" type="Panel" node_paths=PackedStringArray("category", "categoryTitle")]
 custom_minimum_size = Vector2(425, 150)
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_bok5o")
+theme_override_styles/panel = ExtResource("1_datvm")
 script = ExtResource("1_7bvol")
-remaining = NodePath("MarginContainer/HBoxContainer/Remaining Section/Remaining Amount")
-planned = NodePath("MarginContainer/HBoxContainer/Planned Section/Planned Amount")
-itemName = NodePath("MarginContainer/HBoxContainer/Category Section/Category Subtitle")
+category = NodePath("MarginContainer/Category")
+categoryTitle = NodePath("MarginContainer/Category/Category Header/Category Title")
+recieved = ExtResource("2_5my8k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -34,63 +27,39 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Category" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="Category Header" type="HBoxContainer" parent="MarginContainer/Category"]
 layout_mode = 2
 
-[node name="Category Section" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Category Title" type="Label" parent="MarginContainer/HBoxContainer/Category Section"]
+[node name="Category Title" type="Label" parent="MarginContainer/Category/Category Header"]
+custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.259294, 0.259294, 0.259294, 1)
-text = "Income"
+text = "Placeholder"
 
-[node name="Category Subtitle" parent="MarginContainer/HBoxContainer/Category Section" instance=ExtResource("2_6jxo2")]
-layout_mode = 2
-text = ""
-
-[node name="Add Subtitle" type="Button" parent="MarginContainer/HBoxContainer/Category Section"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("3_651ga")
-theme_override_font_sizes/font_size = 12
-text = "Add Placeholder"
-
-[node name="Planned Section" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Planned" type="Label" parent="MarginContainer/HBoxContainer/Planned Section"]
+[node name="Planned" type="Label" parent="MarginContainer/Category/Category Header"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.564962, 0.564962, 0.564962, 1)
 text = "Planned"
 horizontal_alignment = 2
 
-[node name="Planned Amount" parent="MarginContainer/HBoxContainer/Planned Section" instance=ExtResource("4_7ar1f")]
+[node name="Sub-Category" parent="MarginContainer/Category" instance=ExtResource("2_lu3o2")]
 layout_mode = 2
-text = ""
 
-[node name="Remaining Section" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="Button Section" type="HBoxContainer" parent="MarginContainer/Category"]
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="Remaining" type="Label" parent="MarginContainer/HBoxContainer/Remaining Section"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Add Sub-Category" type="Button" parent="MarginContainer/Category/Button Section"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.568973, 0.568973, 0.568973, 1)
-text = "Received"
-horizontal_alignment = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_651ga")
+theme_override_font_sizes/font_size = 12
+text = "Add Sub-Category"
 
-[node name="Remaining Amount" parent="MarginContainer/HBoxContainer/Remaining Section" instance=ExtResource("5_k6rej")]
-layout_mode = 2
-text = ""
-
-[connection signal="text_submitted" from="MarginContainer/HBoxContainer/Category Section/Category Subtitle" to="." method="OnItemNameTextSubmitted"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/Category Section/Add Subtitle" to="." method="OnAddIncomePressed"]
+[connection signal="pressed" from="MarginContainer/Category/Button Section/Add Sub-Category" to="." method="OnAddSubCategoryPressed"]

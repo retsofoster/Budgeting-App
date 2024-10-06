@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgljpkq2isdgq"]
+[gd_scene load_steps=3 format=3 uid="uid://dgljpkq2isdgq"]
+
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/RemainingAmount.cs" id="1_go3h5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7imkl"]
 font_color = Color(0, 0, 0, 1)
@@ -8,3 +10,4 @@ custom_minimum_size = Vector2(0, 31)
 text = "0"
 label_settings = SubResource("LabelSettings_7imkl")
 horizontal_alignment = 2
+script = ExtResource("1_go3h5")

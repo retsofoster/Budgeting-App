@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class CategorySubtitle : LineEdit
+public partial class SubCategory : HBoxContainer
 {
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -15,6 +15,6 @@ public partial class CategorySubtitle : LineEdit
 
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/category_subtitle.tscn";
+        return "res://Budgeting Home/Budget/Budget Body/Budget Category/sub_category.tscn";
     }
 }

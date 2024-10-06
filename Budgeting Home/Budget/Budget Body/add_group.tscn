@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwhlexftyxoa0"]
 
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/AddGroup.cs" id="1_mj3aw"]
-[ext_resource type="Theme" uid="uid://crxochahcdi8y" path="res://Styles/add_group.tres" id="2_4w2ka"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/AddGroup.cs" id="1_gsih6"]
+[ext_resource type="Theme" uid="uid://crxochahcdi8y" path="res://Styles/add_group.tres" id="2_dh81w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpk41"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -27,7 +27,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gpk41")
-script = ExtResource("1_mj3aw")
+script = ExtResource("1_gsih6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -47,7 +47,7 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme = ExtResource("2_4w2ka")
+theme = ExtResource("2_dh81w")
 text = "+ Add Group"
 
 [connection signal="pressed" from="MarginContainer/Button" to="." method="OnAddGroupPressed"]

@@ -1,21 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhncmuu6sju0q"]
 
-[ext_resource type="PackedScene" uid="uid://co0pkwmt1xvmc" path="res://Budgeting Home/Budget/Budget Header/budget_header.tscn" id="1_q5tfm"]
-[ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_svlsv"]
-[ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget/Budget Body/Budget Category/budget_category.tscn" id="2_ddl43"]
-[ext_resource type="Script" path="res://Budgeting Home/Budget/BudgetItems.cs" id="2_e43bu"]
-[ext_resource type="PackedScene" uid="uid://dwhlexftyxoa0" path="res://Budgeting Home/Budget/Budget Body/add_group.tscn" id="3_pnmff"]
+[ext_resource type="StyleBox" uid="uid://n6fblmpmyvkc" path="res://Styles/name_subcategory.tres" id="1_n1tpv"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget/BudgetPanel.cs" id="2_el6uq"]
+[ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget/Budget Body/Budget Category/budget_category.tscn" id="3_htr3q"]
+[ext_resource type="PackedScene" uid="uid://dwhlexftyxoa0" path="res://Budgeting Home/Budget/Budget Body/add_group.tscn" id="4_2wv51"]
+[ext_resource type="PackedScene" uid="uid://co0pkwmt1xvmc" path="res://Budgeting Home/Budget/Budget Header/budget_header.tscn" id="5_aw7fc"]
 
 [sub_resource type="Theme" id="Theme_u63iy"]
-ScrollContainer/styles/panel = ExtResource("1_svlsv")
+ScrollContainer/styles/panel = ExtResource("1_n1tpv")
 
-[node name="Budget" type="Panel"]
+[node name="Budget Panel" type="Panel" node_paths=PackedStringArray("vBoxContainer")]
 custom_minimum_size = Vector2(531, 608)
 size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("1_svlsv")
-script = ExtResource("2_e43bu")
-budgetSection = ExtResource("2_ddl43")
-addGroup1 = ExtResource("3_pnmff")
+theme_override_styles/panel = ExtResource("1_n1tpv")
+script = ExtResource("2_el6uq")
+vBoxContainer = NodePath("MarginContainer/HBoxContainer/Budget/ScrollContainer/VBoxContainer")
+budgetCategory = ExtResource("3_htr3q")
+addGroup1 = ExtResource("4_2wv51")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -40,7 +41,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="Budget Header" parent="MarginContainer/HBoxContainer/Budget" instance=ExtResource("1_q5tfm")]
+[node name="Budget Header" parent="MarginContainer/HBoxContainer/Budget" instance=ExtResource("5_aw7fc")]
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Budget"]

@@ -6,9 +6,10 @@ using System.Diagnostics;
 public partial class BudgetCategory : Panel
 {
 	[Signal] public delegate void AddIncomeEventHandler(string source, float amount, string category);
-	[Export] public Label remaining;
-	[Export] public LineEdit planned;
-	[Export] public LineEdit itemName;
+	[Export] public VBoxContainer category;
+	[Export] public Label categoryTitle;
+
+	[Export] public PackedScene recieved;
 	
 	public override void _Ready()
 	{
@@ -20,12 +21,15 @@ public partial class BudgetCategory : Panel
 	{
 	}
 
+	public static string GetScenePath()
+    {
+        return "res://Budgeting Home/Budget/Budget Body/Budget Category/budget_category.tscn";
+    }
+
 	public void OnAddSubCategoryPressed()
 	{
 		//Node parent = GetNode("MarginContainer/HBoxContainer/VBoxContainer");
-		AddChildAtLocation(CategorySubtitle.GetScenePath(),"MarginContainer/HBoxContainer/VBoxContainer", 4);
-		AddChildAtLocation(PlannedAmount.GetScenePath(),"MarginContainer/HBoxContainer/VBoxContainer2", 3);
-		AddChildRemainingAtLocation(RemainingAmount.GetScenePath(),"MarginContainer/HBoxContainer/VBoxContainer3", 3);		
+		AddChildAtLocation(SubCategory.GetScenePath(),category.GetPath(), 4);		
 	}
 	public void AddChildAtLocation(string childPath, string parentPath, int maxChildren)
 	{

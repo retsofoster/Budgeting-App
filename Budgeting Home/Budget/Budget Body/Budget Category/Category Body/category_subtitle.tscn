@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bq3s5vxqybgsv"]
 
-[ext_resource type="Theme" uid="uid://ds6pclesvt2ke" path="res://Styles/line_edit.tres" id="1_uryu7"]
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/CategorySubtitle.cs" id="2_c5mg0"]
+[ext_resource type="Theme" uid="uid://ds6pclesvt2ke" path="res://Styles/line_edit.tres" id="1_4qdwi"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/CategorySubtitle.cs" id="2_eahrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjr86"]
 bg_color = Color(0.856067, 0.856067, 0.856067, 1)
@@ -17,10 +17,10 @@ border_color = Color(0.470076, 0.470076, 0.470076, 1)
 
 [node name="Category Subtitle" type="LineEdit"]
 custom_minimum_size = Vector2(100, 0)
-theme = ExtResource("1_uryu7")
+theme = ExtResource("1_4qdwi")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pjr86")
 theme_override_styles/normal = SubResource("StyleBoxFlat_77vtk")
 text = "Paycheck 1"
 context_menu_enabled = false
 caret_blink = true
-script = ExtResource("2_c5mg0")
+script = ExtResource("2_eahrn")

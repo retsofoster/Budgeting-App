@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://da8txd71n5oad"]
+
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/SubCategory.cs" id="1_8a0lu"]
+[ext_resource type="PackedScene" uid="uid://bq3s5vxqybgsv" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/category_subtitle.tscn" id="2_ioqrc"]
+[ext_resource type="PackedScene" uid="uid://bsn1cxargu60v" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/planned_amount.tscn" id="3_aff4y"]
+[ext_resource type="PackedScene" uid="uid://dgljpkq2isdgq" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/remaining_amount.tscn" id="4_cm8kn"]
+
+[node name="Sub-Category" type="HBoxContainer"]
+script = ExtResource("1_8a0lu")
+
+[node name="Category Subtitle" parent="." instance=ExtResource("2_ioqrc")]
+custom_minimum_size = Vector2(129, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = ""
+
+[node name="Planned Amount" parent="." instance=ExtResource("3_aff4y")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Recieved Amount" parent="." instance=ExtResource("4_cm8kn")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ""

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dfaqsk60cno6f"]
+
+[node name="Received" type="Label"]
+custom_minimum_size = Vector2(100, 0)
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.568973, 0.568973, 0.568973, 1)
+text = "Received"
+horizontal_alignment = 2
