@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 public partial class BudgetPanel : Panel
 {
-	ScrollContainer scrollContainer;
+	[Export] ScrollContainer scrollContainer;
 	[Export] VBoxContainer vBoxContainer;
 
 	[Export] PackedScene budgetCategory;
@@ -32,12 +32,14 @@ public partial class BudgetPanel : Panel
 	public async void OnAddGroup()
 	{
 		int num;
-		BudgetCategory childScene = (BudgetCategory) ResourceLoader.Load<PackedScene>(BudgetCategory.GetScenePath()).Instantiate();
+		//BudgetCategory childScene = (BudgetCategory) ResourceLoader.Load<PackedScene>(BudgetCategory.GetScenePath()).Instantiate();
+		NameCategory childScene = (NameCategory) ResourceLoader.Load<PackedScene>(NameCategory.GetScenePath()).Instantiate();
 		vBoxContainer.AddChild(childScene);
-		GD.Print(vBoxContainer.GetChildCount());
+		//GD.Print(vBoxContainer.GetChildCount());
+		
 		num = vBoxContainer.GetChildCount() - 2;
-		childScene.Name = "Budget Section" +num.ToString();
 		vBoxContainer.MoveChild(childScene, num);
+		childScene.Name = "Budget Section" +num.ToString();
 		await ToSignal(scrollContainer.GetVScrollBar(), "changed");
 		scrollContainer.ScrollVertical = (int)scrollContainer.GetVScrollBar().MaxValue;		
 	}	
