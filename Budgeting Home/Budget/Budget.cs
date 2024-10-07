@@ -52,7 +52,7 @@ public partial class Budget
             summary.AppendLine($"  Category: {category.Name}");
             foreach (var expense in category.Expenses)
             {
-                summary.AppendLine($"    {expense.Name}: Planned: {expense.Planned}, Remaining: {expense.Remaining}");
+                summary.AppendLine($"    {expense.Name}: Planned: {expense.Planned}, Remaining: {expense.Spent}");
             }
         }
 
@@ -125,14 +125,14 @@ public partial class Budget
     // Get total remaining expenses
     public float GetTotalRemainingExpenses()
     {
-        return Categories.Sum(c => c.Expenses.Sum(e => e.Remaining));
+        return Categories.Sum(c => c.Expenses.Sum(e => e.Spent));
     }
 
     // Calculate budget left after expenses
     public float GetBudgetRemaining()
     {
         float totalIncome = GetTotalReceivedIncome();
-        float totalExpenses = Categories.Sum(c => c.Expenses.Sum(e => e.Remaining));
+        float totalExpenses = Categories.Sum(c => c.Expenses.Sum(e => e.Spent));
         return totalIncome - totalExpenses;
     }
 
