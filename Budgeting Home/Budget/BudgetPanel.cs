@@ -6,6 +6,7 @@ public partial class BudgetPanel : Panel
 {
 	[Export] ScrollContainer scrollContainer;
 	[Export] VBoxContainer vBoxContainer;
+	[Export] Window newTransaction;
 
 	[Export] PackedScene budgetCategory;
 	[Export] PackedScene addGroup1;
@@ -47,10 +48,10 @@ public partial class BudgetPanel : Panel
 	public async void OnAddGroup()
 	{
 		int num;
-		//BudgetCategory childScene = (BudgetCategory) ResourceLoader.Load<PackedScene>(BudgetCategory.GetScenePath()).Instantiate();
+		
 		NameCategory childScene = (NameCategory) ResourceLoader.Load<PackedScene>(NameCategory.GetScenePath()).Instantiate();
 		vBoxContainer.AddChild(childScene);
-		//GD.Print(vBoxContainer.GetChildCount());
+		
 
 		num = vBoxContainer.GetChildCount() - 2;
 		vBoxContainer.MoveChild(childScene, num);
@@ -58,4 +59,8 @@ public partial class BudgetPanel : Panel
 		await ToSignal(scrollContainer.GetVScrollBar(), "changed");
 		scrollContainer.ScrollVertical = (int)scrollContainer.GetVScrollBar().MaxValue;		
 	}	
+
+	public void OnNewTransactionPressed(){
+		newTransaction.Show();
+	}
 }

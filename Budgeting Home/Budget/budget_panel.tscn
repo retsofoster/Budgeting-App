@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhncmuu6sju0q"]
+[gd_scene load_steps=9 format=3 uid="uid://dhncmuu6sju0q"]
 
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_fh4nb"]
 [ext_resource type="Script" path="res://Budgeting Home/Budget/BudgetPanel.cs" id="2_el6uq"]
@@ -10,13 +10,16 @@
 [sub_resource type="Theme" id="Theme_u63iy"]
 ScrollContainer/styles/panel = ExtResource("1_fh4nb")
 
-[node name="Budget Panel" type="Panel" node_paths=PackedStringArray("scrollContainer", "vBoxContainer")]
+[sub_resource type="Theme" id="Theme_fexva"]
+
+[node name="Budget Panel" type="Panel" node_paths=PackedStringArray("scrollContainer", "vBoxContainer", "newTransaction")]
 custom_minimum_size = Vector2(531, 608)
 size_flags_horizontal = 3
 theme_override_styles/panel = ExtResource("1_fh4nb")
 script = ExtResource("2_el6uq")
 scrollContainer = NodePath("MarginContainer/HBoxContainer/Budget/ScrollContainer")
 vBoxContainer = NodePath("MarginContainer/HBoxContainer/Budget/ScrollContainer/VBoxContainer")
+newTransaction = NodePath("MarginContainer/HBoxContainer/Budget/Window")
 budgetCategory = ExtResource("3_htr3q")
 addGroup1 = ExtResource("4_2wv51")
 recievedScene = ExtResource("5_28imi")
@@ -56,3 +59,15 @@ theme = SubResource("Theme_u63iy")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="New Transaction" type="Button" parent="MarginContainer/HBoxContainer/Budget"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = SubResource("Theme_fexva")
+text = "+"
+
+[node name="Window" type="Window" parent="MarginContainer/HBoxContainer/Budget"]
+initial_position = 1
+visible = false
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Budget/New Transaction" to="." method="OnNewTransactionPressed"]
