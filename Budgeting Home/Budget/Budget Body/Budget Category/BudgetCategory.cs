@@ -48,11 +48,19 @@ public partial class BudgetCategory : Panel
 	}
 	public void AddChildAtLocation(string childPath, string parentPath, int max, string subtitle)
 	{
-		BudgetMenu.currentBudget.AddExpenseToCategory(presetCategoryTitle.Text, "Label", 0, 0);
+		if(presetCategoryTitle.Text == "Income")
+		{
+			BudgetMenu.currentBudget.AddIncome(subtitle, 0f);
+
+		}
+		else
+		{
+			BudgetMenu.currentBudget.AddExpenseToCategory(presetCategoryTitle.Text, "Label", 0, 0);
+
+		}
 		Node parent = GetNode(parentPath);
 		int location;
 		SubCategory childScene = (SubCategory) ResourceLoader.Load<PackedScene>(childPath).Instantiate();
-		BudgetMenu.currentBudget.AddIncome(subtitle, 0);
 		if(parent.GetChildCount() < max)
 		{
 			parent.AddChild(childScene);
