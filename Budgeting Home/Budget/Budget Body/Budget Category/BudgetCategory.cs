@@ -37,12 +37,9 @@ public partial class BudgetCategory : Panel
 		if(presetCategoryTitle.Text == "Income")
 		{
 			label = "Paycheck" +" " +(maxChildren - 2);
-			//budgetMenu.currentBudget.
-			//amount = (Label) ResourceLoader.Load<PackedScene>(Received.GetScenePath()).Instantiate();
 			AddChildAtLocation(SubCategory.GetScenePath(),category.GetPath(), maxChildren, label);
 		}else{
 			label = "Label";
-			//amount = (Label) ResourceLoader.Load<PackedScene>(RemainingAmount.GetScenePath()).Instantiate();
 			AddChildAtLocation(SubCategory.GetScenePath(),category.GetPath(), maxChildren, label);
 		}
 	}
@@ -51,12 +48,10 @@ public partial class BudgetCategory : Panel
 		if(presetCategoryTitle.Text == "Income")
 		{
 			BudgetMenu.currentBudget.AddIncome(subtitle, 0f);
-
 		}
 		else
 		{
 			BudgetMenu.currentBudget.AddExpenseToCategory(presetCategoryTitle.Text, "Label", 0, 0);
-
 		}
 		Node parent = GetNode(parentPath);
 		int location;
