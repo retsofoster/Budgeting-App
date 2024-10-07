@@ -6,14 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://da8txd71n5oad" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/sub_category.tscn" id="2_lu3o2"]
 [ext_resource type="Theme" uid="uid://crxochahcdi8y" path="res://Styles/add_group.tres" id="3_651ga"]
 
-[node name="Budget Category" type="Panel" node_paths=PackedStringArray("category", "categoryTitle")]
+[node name="Budget Category" type="Panel" node_paths=PackedStringArray("category", "subCategory", "presetCategoryTitle", "planned")]
 custom_minimum_size = Vector2(425, 150)
 size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("1_datvm")
 script = ExtResource("1_7bvol")
 category = NodePath("MarginContainer/Category")
-categoryTitle = NodePath("MarginContainer/Category/Category Header/Category Title")
+subCategory = NodePath("MarginContainer/Category/Sub-Category")
+presetCategoryTitle = NodePath("MarginContainer/Category/Category Header/Category Title")
 recieved = ExtResource("2_5my8k")
+subcategory = ExtResource("2_lu3o2")
+planned = NodePath("MarginContainer/Category/Category Header/Planned")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,7 +45,7 @@ theme_override_colors/font_color = Color(0.259294, 0.259294, 0.259294, 1)
 text = "Placeholder"
 
 [node name="Planned" type="Label" parent="MarginContainer/Category/Category Header"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.564962, 0.564962, 0.564962, 1)

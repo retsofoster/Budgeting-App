@@ -1,77 +1,151 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualBasic;
+using System.Text;
+using Godot;
 
-public class Budget
+public partial class Budget
 {
-    public string name;
-    public DateTime dateStart;
-    public DateTime dateEnd;
-    public List<Income> Incomes { get; set; } = new List<Income>();
-    public List<ExpenseCategory> Categories { get; set; } = new List<ExpenseCategory>();
-    public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+    public List<Income> Incomes { get; private set; } = new List<Income>();
+    public List<ExpenseCategory> Categories { get; private set; } = new List<ExpenseCategory>();
 
-    public void AddIncome(string source, float amount)
+    // Method to add an income source
+    public void AddIncome(string name, float planned)
     {
-        Incomes.Add(new Income(source, amount));
+        Incomes.Add(new Income(name, planned));
     }
 
-    // Add a category
-    public void AddCategory(string name, float budgetAmount)
+     // *** New Method to Update Planned Income ***
+    public void UpdatePlannedIncome(string name, float newPlannedAmount)
     {
-        Categories.Add(new ExpenseCategory(name, budgetAmount));
-    }
-
-    // Add a transaction
-    public void AddTransaction(string description, float amount, string categoryName, DateTime date)
-    {
-        var category = Categories.FirstOrDefault(c => c.Name == categoryName);
-        if (category != null)
-        {
-            Transactions.Add(new Transaction(description, date, amount, categoryName));
-        }
-        else
-        {
-            throw new Exception("Category not found");
-        }
-    }
-
-    // Calculate total income
-    public float TotalIncome()
-    {
-        return Incomes.Sum(i => i.Amount);
-    }
-
-    public int GetIncomeCount()
-    {
-        return Incomes.Count;
-    }
-
-    public float GetIncomeBySource(string name)
-    {
-        
         var income = Incomes.FirstOrDefault(i => i.Name == name);
         if (income != null)
         {
-            return income.Amount;
+            income.UpdatePlanned(newPlannedAmount);
         }
         else
         {
-            throw new Exception("Income source not found");
+            throw new Exception("Income not found.");
         }
     }
 
-    // Calculate total expenses
-    public float TotalExpenses()
+    public void PrintSummary()
     {
-        return Transactions.Sum(t => t.amount);
+        StringBuilder summary = new StringBuilder();
+
+        // Print Income section
+        summary.AppendLine("----- Budget Summary -----");
+        summary.AppendLine("\nIncome Sources:");
+        foreach (var income in Incomes)
+        {
+            summary.AppendLine($"  {income.Name}: Planned: {income.Planned}, Received: {income.Received}");
+        }
+
+        // Total income
+        summary.AppendLine($"\nTotal Planned Income: {GetTotalPlannedIncome()}");
+        summary.AppendLine($"Total Received Income: {GetTotalReceivedIncome()}");
+
+        // Print Expenses section
+        summary.AppendLine("\nExpense Categories:");
+        foreach (var category in Categories)
+        {
+            summary.AppendLine($"  Category: {category.Name}");
+            foreach (var expense in category.Expenses)
+            {
+                summary.AppendLine($"    {expense.Name}: Planned: {expense.Planned}, Remaining: {expense.Remaining}");
+            }
+        }
+
+        // Total expenses
+        summary.AppendLine($"\nTotal Planned Expenses: {GetTotalPlannedExpenses()}");
+        summary.AppendLine($"Total Remaining Expenses: {GetTotalRemainingExpenses()}");
+
+        // Budget remaining after expenses
+        summary.AppendLine($"\nOverall Remaining Budget: {GetBudgetRemaining()}");
+
+        // Print the summary
+        GD.Print(summary.ToString());
     }
 
-    // Calculate remaining budget
-    public float RemainingBudget()
+    // *** New Method to Update Planned Expense ***
+    public void UpdatePlannedExpense(string categoryName, string expenseName, float newPlannedAmount)
     {
-        return TotalIncome() - TotalExpenses();
+        var category = Categories.FirstOrDefault(c => c.Name == categoryName);
+        if (category == null)
+        {
+            throw new Exception("Category not found.");
+        }
+
+        var expense = category.Expenses.FirstOrDefault(e => e.Name == expenseName);
+        if (expense != null)
+        {
+            expense.UpdatePlanned(newPlannedAmount);
+        }
+        else
+        {
+            throw new Exception("Expense not found.");
+        }
+    }
+    // Method to add an expense category
+    public void AddCategory(string name)
+    {
+        Categories.Add(new ExpenseCategory(new List<Expense>(), name));
     }
 
+    // Method to add an expense to a category
+    public void AddExpenseToCategory(string categoryName, string expenseName, float planned, float remaining)
+    {
+        var category = Categories.FirstOrDefault(c => c.Name == categoryName);
+        if (category == null)
+        {
+            throw new Exception("Category not found.");
+        }
+
+        category.AddExpense(new Expense(expenseName, planned, remaining));
+    }
+
+    // Get total planned income
+    public float GetTotalPlannedIncome()
+    {
+        return Incomes.Sum(i => i.Planned);
+    }
+
+    // Get total received income
+    public float GetTotalReceivedIncome()
+    {
+        return Incomes.Sum(i => i.Received);
+    }
+
+    // Get total planned expenses
+    public float GetTotalPlannedExpenses()
+    {
+        return Categories.Sum(c => c.Expenses.Sum(e => e.Planned));
+    }
+
+    // Get total remaining expenses
+    public float GetTotalRemainingExpenses()
+    {
+        return Categories.Sum(c => c.Expenses.Sum(e => e.Remaining));
+    }
+
+    // Calculate budget left after expenses
+    public float GetBudgetRemaining()
+    {
+        float totalIncome = GetTotalReceivedIncome();
+        float totalExpenses = Categories.Sum(c => c.Expenses.Sum(e => e.Remaining));
+        return totalIncome - totalExpenses;
+    }
+
+    // Retrieve an income by name
+    public Income GetIncomeByName(string name)
+    {
+        return Incomes.FirstOrDefault(i => i.Name == name);
+    }
+
+    // Retrieve an expense by name within a category
+    public Expense GetExpenseByName(string categoryName, string expenseName)
+    {
+        var category = Categories.FirstOrDefault(c => c.Name == categoryName);
+        return category?.Expenses.FirstOrDefault(e => e.Name == expenseName);
+    }
 }

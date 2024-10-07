@@ -15,6 +15,6 @@ public partial class RemainingAmount : Label
 
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/Budget Category/remaining_amount.tscn";
+        return "res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/remaining_amount.tscn";
     }
 }

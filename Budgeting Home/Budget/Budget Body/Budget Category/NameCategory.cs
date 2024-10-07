@@ -4,6 +4,8 @@ using System;
 public partial class NameCategory : Panel
 {
 	[Signal] public delegate void CategoryNameSubmittedEventHandler(string groupName);
+	[Export] PackedScene amount;
+	//public RemainingAmount amountUpdate = (RemainingAmount) ResourceLoader.Load<PackedScene>(RemainingAmount.GetScenePath()).Instantiate();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -21,11 +23,21 @@ public partial class NameCategory : Panel
 
 	public void OnGroupNameTextSubmitted(string groupName)
 	{
+		BudgetMenu.currentBudget.AddCategory(groupName);
 		BudgetCategory childScene = (BudgetCategory) ResourceLoader.Load<PackedScene>(BudgetCategory.GetScenePath()).Instantiate();
 		AddSibling(childScene);
-		childScene.categoryTitle.Text = groupName;
-		BudgetMenu.currentBudget.AddCategory(groupName, 0);
+		childScene.presetCategoryTitle.Text = groupName;
+		BudgetMenu.currentBudget.AddExpenseToCategory(groupName, "Label", 0, 0);
+		childScene.subCategory.category = groupName;
+		childScene.subCategory.categorySubtitle.Text = "Label";
+		childScene.subCategory.plannedAmount.Text = 0.ToString();
+		childScene.subCategory.updatedAmount.Text = 0.ToString();
+		
+
+		childScene.planned.AddSibling(amount.Instantiate());
+
+		
 		QueueFree();
-		//EmitSignal(SignalName.CategoryNameSubmitted, groupName);
+		
 	}
 }

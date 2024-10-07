@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0a6ot1b6mttq"]
+[gd_scene load_steps=5 format=3 uid="uid://c0a6ot1b6mttq"]
 
 [ext_resource type="StyleBox" uid="uid://n6fblmpmyvkc" path="res://Styles/name_subcategory.tres" id="1_2ei24"]
 [ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/NameCategory.cs" id="2_fy7kr"]
 [ext_resource type="Theme" uid="uid://cklcqrfpuuck7" path="res://Styles/line_edit_blue.tres" id="3_11ad5"]
+[ext_resource type="PackedScene" uid="uid://bpaiyjumg70o1" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/remaining_amount.tscn" id="3_nqvsl"]
 
 [node name="Name Category" type="Panel"]
 custom_minimum_size = Vector2(425, 50)
@@ -10,6 +11,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = ExtResource("1_2ei24")
 script = ExtResource("2_fy7kr")
+amount = ExtResource("3_nqvsl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

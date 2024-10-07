@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgljpkq2isdgq"]
+
+[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/RecievedAmount.cs" id="1_u7ipi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7imkl"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Recieved" type="Label"]
+custom_minimum_size = Vector2(0, 31)
+rotation = -0.00155947
+text = "0"
+label_settings = SubResource("LabelSettings_7imkl")
+horizontal_alignment = 2
+script = ExtResource("1_u7ipi")

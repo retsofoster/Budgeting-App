@@ -1,24 +1,18 @@
+using System.Collections.Generic;
+
 public class ExpenseCategory
 {
-    public string Name { get; set; }
-    public float BudgetAmount { get; set; }
-    public float SpentAmount { get; set; }
+    public string Name;
+    public List<Expense> Expenses { get; private set; } = new List<Expense>();
 
-    public ExpenseCategory(string name, float budgetAmount)
+    public ExpenseCategory(List<Expense> expenses, string name)
     {
         Name = name;
-        BudgetAmount = budgetAmount;
-        SpentAmount = 0f;  // Initially nothing is spent
+        Expenses = expenses ?? new List<Expense>();
     }
 
-    public float RemainingBudget()
+    public void AddExpense(Expense expense)
     {
-        return BudgetAmount - SpentAmount;
-    }
-
-    // Method to add a transaction to the category
-    public void AddTransaction(float amount)
-    {
-        SpentAmount += amount;
+        Expenses.Add(expense);
     }
 }
