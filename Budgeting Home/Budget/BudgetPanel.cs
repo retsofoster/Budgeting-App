@@ -15,7 +15,6 @@ public partial class BudgetPanel : Panel
 	public override void _Ready()
 	{
 		BudgetMenu.currentBudget.AddIncome("Paycheck 1", 0);
-		BudgetMenu.currentBudget.AddCategory("Income");
 		
 		BudgetCategory budgetCategoryAsChild = (BudgetCategory) budgetCategory.Instantiate();
 		vBoxContainer.AddChild(budgetCategoryAsChild);
