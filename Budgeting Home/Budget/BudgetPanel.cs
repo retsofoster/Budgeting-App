@@ -6,7 +6,7 @@ public partial class BudgetPanel : Panel
 {
 	[Export] ScrollContainer scrollContainer;
 	[Export] VBoxContainer vBoxContainer;
-	[Export] Window newTransaction;
+	[Export] PackedScene newTransaction;
 
 	[Export] PackedScene budgetCategory;
 	[Export] PackedScene addGroup1;
@@ -61,6 +61,8 @@ public partial class BudgetPanel : Panel
 	}	
 
 	public void OnNewTransactionPressed(){
-		newTransaction.Show();
+		Window child= (Window) newTransaction.Instantiate();
+		AddChild(child);
+		//newTransaction.Show();
 	}
 }

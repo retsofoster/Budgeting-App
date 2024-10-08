@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://bobm6i5s31yo7"]
+
+[ext_resource type="Script" path="res://NewTransactionWindow.cs" id="1_7io5a"]
+[ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_o40w1"]
+[ext_resource type="Theme" uid="uid://c50a2v5brijr8" path="res://Themes/new_transaction.tres" id="2_8i5f4"]
+[ext_resource type="StyleBox" uid="uid://bj7b8pwrwivk8" path="res://Themes/new_transaction_lineEdit.tres" id="3_kxu4r"]
+[ext_resource type="Script" path="res://MenuButton.cs" id="4_t1d0b"]
+
+[sub_resource type="Theme" id="Theme_ak5kl"]
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpeff"]
+bg_color = Color(0.73, 0.670018, 0.6059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_ckj8m"]
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0.29219, 0.29219, 0.29219, 1)
+LineEdit/colors/font_placeholder_color = Color(0.568973, 0.568973, 0.568973, 1)
+LineEdit/styles/focus = null
+LineEdit/styles/normal = ExtResource("3_kxu4r")
+
+[node name="Window" type="Window" node_paths=PackedStringArray("menuButton")]
+auto_translate_mode = 1
+initial_position = 1
+size = Vector2i(500, 500)
+script = ExtResource("1_7io5a")
+menuButton = NodePath("New Transaction/MarginContainer/VBoxContainer/Body/MenuButton")
+
+[node name="New Transaction" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_o40w1")
+
+[node name="MarginContainer" type="MarginContainer" parent="New Transaction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ak5kl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="New Transaction/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Header" type="HBoxContainer" parent="New Transaction/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="New Transaction/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+theme = ExtResource("2_8i5f4")
+text = "New Transaction"
+
+[node name="Control" type="Control" parent="New Transaction/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="New Transaction/MarginContainer/VBoxContainer/Header"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tpeff")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="New Transaction/MarginContainer/VBoxContainer/Header/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Income" type="Label" parent="New Transaction/MarginContainer/VBoxContainer/Header/Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8i5f4")
+text = "Income"
+
+[node name="Income&Expense Selector" type="CheckButton" parent="New Transaction/MarginContainer/VBoxContainer/Header/Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8i5f4")
+button_pressed = true
+
+[node name="Expense" type="Label" parent="New Transaction/MarginContainer/VBoxContainer/Header/Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_8i5f4")
+text = "Expense"
+
+[node name="Body" type="VBoxContainer" parent="New Transaction/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Amount" type="LineEdit" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+theme = SubResource("Theme_ckj8m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+
+[node name="Date" type="LineEdit" parent="New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme = ExtResource("2_8i5f4")
+text = "PlaceHolder"
+expand_to_text_length = true
+
+[node name="Description" type="LineEdit" parent="New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_8i5f4")
+placeholder_text = "Where did you spend this money?"
+
+[node name="MenuButton" type="MenuButton" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("2_8i5f4")
+text = "Choose a Budget Item"
+flat = false
+script = ExtResource("4_t1d0b")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
+layout_mode = 2
+alignment = 2
+
+[node name="Cancel" type="Button" parent="New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer2"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Add Transaction" type="Button" parent="New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer2"]
+layout_mode = 2
+text = "Add Transaction"
+
+[connection signal="about_to_popup" from="New Transaction/MarginContainer/VBoxContainer/Body/MenuButton" to="." method="OnMenuButtonAboutToPopup"]
+[connection signal="pressed" from="New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer2/Cancel" to="." method="OnCancelPressed"]
