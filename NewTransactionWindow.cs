@@ -53,4 +53,10 @@ public partial class NewTransactionWindow : Window
 			popupMenu.SetItemChecked(i,false);
 		}
 	}
+
+	public void OnAddTransactionPressed()
+	{
+		
+	}
+
 }
