@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://br1kkh6m5s5ah"]
 
-[ext_resource type="Script" path="res://BudgetScreen.cs" id="1_ap1oj"]
+[ext_resource type="Script" path="res://Budgeting Home/BudgetScreen.cs" id="1_ap1oj"]
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_kve1u"]
 [ext_resource type="PackedScene" uid="uid://dhncmuu6sju0q" path="res://Budgeting Home/Budget/budget_panel.tscn" id="2_ukmm7"]
 

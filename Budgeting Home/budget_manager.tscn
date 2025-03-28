@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chy6ft6fvkmbn"]
 
-[ext_resource type="Script" path="res://BudgetManager.cs" id="1_4kirh"]
+[ext_resource type="Script" path="res://Budgeting Home/BudgetManager.cs" id="1_4kirh"]
 
 [node name="Budget Manager" type="Control"]
 layout_mode = 3

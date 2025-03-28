@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Budgeting Home/BudgetMenu.cs" id="1_g7ci6"]
 [ext_resource type="PackedScene" uid="uid://bx84gsoqf6gi3" path="res://Budgeting Home/basic_menu_theme.tscn" id="1_t5ygj"]
-[ext_resource type="PackedScene" uid="uid://br1kkh6m5s5ah" path="res://budget_screen.tscn" id="3_iq2a1"]
+[ext_resource type="PackedScene" uid="uid://br1kkh6m5s5ah" path="res://Budgeting Home/budget_screen.tscn" id="3_iq2a1"]
 
 [node name="Budget Menu" type="Control"]
 layout_mode = 3
