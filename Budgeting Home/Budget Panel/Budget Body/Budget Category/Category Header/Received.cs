@@ -15,6 +15,6 @@ public partial class Received : Label
 
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/Budget Category/Category Header/received.tscn";
+        return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Header/received.tscn";
     }
 }

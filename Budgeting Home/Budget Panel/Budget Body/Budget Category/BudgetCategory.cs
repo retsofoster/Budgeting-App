@@ -11,6 +11,8 @@ public partial class BudgetCategory : Panel
 	[Export] public PackedScene recieved;
 	[Export] public PackedScene subcategory;
 	[Export] public Label planned;
+
+	private Node parent; 
 	//public string categoryTitle;
 	public int maxChildren = 4;
 	public string label;
@@ -19,7 +21,7 @@ public partial class BudgetCategory : Panel
 	
 	public override void _Ready()
 	{
-		
+		parent = GetNode(category.GetPath());
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,21 +31,30 @@ public partial class BudgetCategory : Panel
 
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/Budget Category/budget_category.tscn";
+        return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/budget_category.tscn";
     }
 
 	public void OnAddSubCategoryPressed()
 	{
-		if(presetCategoryTitle.Text == "Income")
+		if(parent.GetChildCount() < maxChildren)
 		{
-			label = "Paycheck" +" " +(maxChildren - 2);
-			AddChildAtLocation(SubCategory.GetScenePath(),category.GetPath(), maxChildren, label);
-		}else{
-			label = "Label";
-			AddChildAtLocation(SubCategory.GetScenePath(),category.GetPath(), maxChildren, label);
+			if(presetCategoryTitle.Text == "Income")
+			{
+				label = "Paycheck" +" " +(maxChildren - 2);
+				AddChildAtLocation(SubCategory.GetScenePath(), maxChildren, label);
+			}else{
+				label = "Label";
+				AddChildAtLocation(SubCategory.GetScenePath(), maxChildren, label);
+			}
+		}
+		else
+		{
+			GD.Print("Group is Full!");
+			maxChildren++;
+
 		}
 	}
-	public void AddChildAtLocation(string childPath, string parentPath, int max, string subtitle)
+	public void AddChildAtLocation(string childPath, int max, string subtitle)
 	{
 		if(presetCategoryTitle.Text == "Income")
 		{
@@ -53,30 +64,23 @@ public partial class BudgetCategory : Panel
 		{
 			BudgetMenu.currentBudget.AddExpenseToCategory(presetCategoryTitle.Text, "Label", 0, 0);
 		}
-		Node parent = GetNode(parentPath);
 		int location;
 		SubCategory childScene = (SubCategory) ResourceLoader.Load<PackedScene>(childPath).Instantiate();
-		if(parent.GetChildCount() < max)
-		{
-			parent.AddChild(childScene);
+		
+		parent.AddChild(childScene);
 
-			childScene.categorySubtitle.Text = subtitle;
-			childScene.plannedAmount.Text = BudgetMenu.currentBudget.GetIncomeByName(subtitle).Planned.ToString();
-			childScene.updatedAmount.Text = BudgetMenu.currentBudget.GetIncomeByName(subtitle).Received.ToString();
-			
-			GD.Print(parent.GetChildCount());
-			
-			location = parent.GetChildCount() - 2;
-			childScene.Name = "Budget Item" +location.ToString();
+		childScene.categorySubtitle.Text = subtitle;
+		childScene.plannedAmount.Text = BudgetMenu.currentBudget.GetIncomeByName(subtitle).Planned.ToString();
+		childScene.updatedAmount.Text = BudgetMenu.currentBudget.GetIncomeByName(subtitle).Received.ToString();
+		
+		GD.Print(parent.GetChildCount());
+		
+		location = parent.GetChildCount() - 2;
+		childScene.Name = "Budget Item" +location.ToString();
 
-			parent.MoveChild(childScene, location);
-		}
-		else
-		{
-			GD.Print("Group is Full!");
-			maxChildren++;
-
-		}
+		parent.MoveChild(childScene, location);
+		
+		
 	}
 }
 

@@ -18,13 +18,13 @@ public partial class BudgetMenu : Control
 		// 	Name = "Paycheck 1",
 		// 	Amount = 0,
 		// });
-		AddChild(basicMenuTheme.Instantiate());
-		AddChild(BudgetScreen.Instantiate());
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		
 		//GD.Print(budgetManager.GetIncomeBySource("Income"));
 	}
 	

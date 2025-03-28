@@ -15,6 +15,6 @@ public partial class CategorySubtitle : LineEdit
 
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/Budget Category/sub_category.tscn";
+        return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/sub_category.tscn";
     }
 }

@@ -14,6 +14,6 @@ public partial class PlannedAmount : LineEdit
 	}
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/Budget Category/planned_amount.tscn";
+        return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/planned_amount.tscn";
     }
 }

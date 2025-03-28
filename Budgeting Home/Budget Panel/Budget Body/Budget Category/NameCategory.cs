@@ -18,7 +18,7 @@ public partial class NameCategory : Panel
 
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/Budget Category/name_category.tscn";
+        return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/name_category.tscn";
     }
 
 	public void OnGroupNameTextSubmitted(string groupName)

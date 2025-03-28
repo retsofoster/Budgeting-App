@@ -20,7 +20,7 @@ public partial class SubCategory : HBoxContainer
 
 	public static string GetScenePath()
     {
-        return "res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/sub_category.tscn";
+        return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/sub_category.tscn";
     }
 	public void OnPlannedAmountTextSubmitted(string plannedAmount)
 	{

@@ -16,16 +16,19 @@ custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = ""
+script = null
 
 [node name="Planned Amount" parent="." instance=ExtResource("3_aff4y")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = ""
+script = null
 
 [node name="Updated Amount" parent="." instance=ExtResource("4_cm8kn")]
 layout_mode = 2
 size_flags_horizontal = 3
 text = ""
+script = null
 
 [connection signal="text_submitted" from="Planned Amount" to="." method="OnPlannedAmountTextSubmitted"]
