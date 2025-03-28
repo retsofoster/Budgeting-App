@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://da8txd71n5oad"]
 
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/SubCategory.cs" id="1_8a0lu"]
-[ext_resource type="PackedScene" uid="uid://bq3s5vxqybgsv" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/category_subtitle.tscn" id="2_ioqrc"]
-[ext_resource type="PackedScene" uid="uid://bsn1cxargu60v" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/planned_amount.tscn" id="3_aff4y"]
-[ext_resource type="PackedScene" uid="uid://dgljpkq2isdgq" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/recieved_amount.tscn" id="4_cm8kn"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/SubCategory.cs" id="1_8a0lu"]
+[ext_resource type="PackedScene" uid="uid://bq3s5vxqybgsv" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/category_subtitle.tscn" id="2_ioqrc"]
+[ext_resource type="PackedScene" uid="uid://bsn1cxargu60v" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/planned_amount.tscn" id="3_aff4y"]
+[ext_resource type="PackedScene" uid="uid://dgljpkq2isdgq" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/recieved_amount.tscn" id="4_cm8kn"]
 
 [node name="Sub-Category" type="HBoxContainer" node_paths=PackedStringArray("categorySubtitle", "plannedAmount", "updatedAmount")]
 script = ExtResource("1_8a0lu")

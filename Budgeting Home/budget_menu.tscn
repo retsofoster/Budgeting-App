@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Budgeting Home/BudgetMenu.cs" id="1_g7ci6"]
 [ext_resource type="Script" path="res://Budgeting Home/BudgetScreen.cs" id="4_8wvkf"]
-[ext_resource type="PackedScene" uid="uid://dhncmuu6sju0q" path="res://Budgeting Home/Budget/budget_panel.tscn" id="5_8agd0"]
+[ext_resource type="PackedScene" uid="uid://dhncmuu6sju0q" path="res://Budgeting Home/Budget Panel/budget_panel.tscn" id="5_8agd0"]
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="6_v8uso"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypvxg"]

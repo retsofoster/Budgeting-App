@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfaqsk60cno6f"]
 
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Header/Received.cs" id="1_7vphk"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Header/Received.cs" id="1_7vphk"]
 
 [node name="Received" type="Label"]
 custom_minimum_size = Vector2(100, 0)

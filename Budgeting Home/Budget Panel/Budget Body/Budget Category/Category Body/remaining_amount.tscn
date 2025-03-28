@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpaiyjumg70o1"]
 
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/RemainingAmount.cs" id="1_go3h5"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/RemainingAmount.cs" id="1_go3h5"]
 
 [node name="Remaining" type="Label"]
 custom_minimum_size = Vector2(100, 0)

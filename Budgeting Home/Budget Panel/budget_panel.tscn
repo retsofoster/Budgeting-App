@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dhncmuu6sju0q"]
 
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_fh4nb"]
-[ext_resource type="Script" path="res://Budgeting Home/Budget/BudgetPanel.cs" id="2_el6uq"]
-[ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget/Budget Body/Budget Category/budget_category.tscn" id="3_htr3q"]
-[ext_resource type="PackedScene" uid="uid://dwhlexftyxoa0" path="res://Budgeting Home/Budget/Budget Body/add_group.tscn" id="4_2wv51"]
-[ext_resource type="PackedScene" uid="uid://dfaqsk60cno6f" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Header/received.tscn" id="5_28imi"]
-[ext_resource type="PackedScene" uid="uid://co0pkwmt1xvmc" path="res://Budgeting Home/Budget/Budget Header/budget_header.tscn" id="5_aw7fc"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/BudgetPanel.cs" id="2_el6uq"]
+[ext_resource type="PackedScene" uid="uid://dbrv3hgcp7udb" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/budget_category.tscn" id="3_htr3q"]
+[ext_resource type="PackedScene" uid="uid://dwhlexftyxoa0" path="res://Budgeting Home/Budget Panel/Budget Body/add_group.tscn" id="4_2wv51"]
+[ext_resource type="PackedScene" uid="uid://dfaqsk60cno6f" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Header/received.tscn" id="5_28imi"]
+[ext_resource type="PackedScene" uid="uid://co0pkwmt1xvmc" path="res://Budgeting Home/Budget Panel/Budget Header/budget_header.tscn" id="5_aw7fc"]
 [ext_resource type="PackedScene" uid="uid://bobm6i5s31yo7" path="res://new_transaction_window.tscn" id="7_yihfu"]
 
 [sub_resource type="Theme" id="Theme_u63iy"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwhlexftyxoa0"]
 
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/AddGroup.cs" id="1_gsih6"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Body/AddGroup.cs" id="1_gsih6"]
 [ext_resource type="Theme" uid="uid://crxochahcdi8y" path="res://Styles/add_group.tres" id="2_dh81w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpk41"]

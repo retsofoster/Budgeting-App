@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bq3s5vxqybgsv"]
 
 [ext_resource type="Theme" uid="uid://ds6pclesvt2ke" path="res://Styles/line_edit.tres" id="1_4qdwi"]
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/CategorySubtitle.cs" id="2_eahrn"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/CategorySubtitle.cs" id="2_eahrn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjr86"]
 bg_color = Color(0.856067, 0.856067, 0.856067, 1)

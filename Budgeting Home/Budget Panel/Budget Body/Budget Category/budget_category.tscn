@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbrv3hgcp7udb"]
 
-[ext_resource type="Script" path="res://Budgeting Home/Budget/Budget Body/Budget Category/BudgetCategory.cs" id="1_7bvol"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/BudgetCategory.cs" id="1_7bvol"]
 [ext_resource type="StyleBox" uid="uid://cg4mvk6uj77yw" path="res://Styles/budget_category.tres" id="1_datvm"]
-[ext_resource type="PackedScene" uid="uid://dfaqsk60cno6f" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Header/received.tscn" id="2_5my8k"]
-[ext_resource type="PackedScene" uid="uid://da8txd71n5oad" path="res://Budgeting Home/Budget/Budget Body/Budget Category/Category Body/sub_category.tscn" id="2_lu3o2"]
+[ext_resource type="PackedScene" uid="uid://dfaqsk60cno6f" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Header/received.tscn" id="2_5my8k"]
+[ext_resource type="PackedScene" uid="uid://da8txd71n5oad" path="res://Budgeting Home/Budget Panel/Budget Body/Budget Category/Category Body/sub_category.tscn" id="2_lu3o2"]
 [ext_resource type="Theme" uid="uid://crxochahcdi8y" path="res://Styles/add_group.tres" id="3_651ga"]
 
 [node name="Budget Category" type="Panel" node_paths=PackedStringArray("category", "subCategory", "presetCategoryTitle", "planned")]
