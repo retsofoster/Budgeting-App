@@ -14,18 +14,24 @@ public partial class BudgetPanel : Panel
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		//Add initial data
 		BudgetMenu.currentBudget.AddIncome("Paycheck 1", 0);
 		
+		//Add a category
 		BudgetCategory budgetCategoryAsChild = (BudgetCategory) budgetCategory.Instantiate();
 		vBoxContainer.AddChild(budgetCategoryAsChild);
 		budgetCategoryAsChild.presetCategoryTitle.Text = "Income";
 		
+		//
 		SubCategory subcategory = budgetCategoryAsChild.GetNode<SubCategory>("MarginContainer/Category/Sub-Category");
 
 		subcategory.category = "Income";
-		subcategory.categorySubtitle.Text = BudgetMenu.currentBudget.Incomes[0].Name;
-		subcategory.plannedAmount.Text = BudgetMenu.currentBudget.Incomes[0].Planned.ToString();
-		subcategory.updatedAmount.Text = BudgetMenu.currentBudget.Incomes[0].Received.ToString();
+		foreach(var value in BudgetMenu.currentBudget.Incomes)
+		{
+			subcategory.categorySubtitle.Text = value.Name;
+			subcategory.plannedAmount.Text = value.Planned.ToString();
+			subcategory.updatedAmount.Text = value.Received.ToString();
+		}
 		
 		Received recieved = (Received) recievedScene.Instantiate();
 		budgetCategoryAsChild.planned.AddSibling(recieved);
