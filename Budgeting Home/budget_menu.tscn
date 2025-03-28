@@ -1,8 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://j2lne2dlru43"]
+[gd_scene load_steps=8 format=3 uid="uid://j2lne2dlru43"]
 
 [ext_resource type="Script" path="res://Budgeting Home/BudgetMenu.cs" id="1_g7ci6"]
-[ext_resource type="PackedScene" uid="uid://bx84gsoqf6gi3" path="res://Budgeting Home/basic_menu_theme.tscn" id="1_t5ygj"]
-[ext_resource type="PackedScene" uid="uid://br1kkh6m5s5ah" path="res://Budgeting Home/budget_screen.tscn" id="3_iq2a1"]
+[ext_resource type="Script" path="res://Budgeting Home/BudgetScreen.cs" id="4_8wvkf"]
+[ext_resource type="PackedScene" uid="uid://dhncmuu6sju0q" path="res://Budgeting Home/Budget/budget_panel.tscn" id="5_8agd0"]
+[ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="6_v8uso"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypvxg"]
+bg_color = Color(0.406036, 0.633561, 0.432727, 1)
+
+[sub_resource type="PackedScene" id="PackedScene_qunvb"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Basic Menu Theme", "Control", "layout_mode", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "Panel", "Panel", "show_behind_parent", "layout_mode", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "theme_override_styles/panel", "MarginContainer", "MarginContainer", "layout_mode", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "theme_override_constants/margin_left", "theme_override_constants/margin_top", "theme_override_constants/margin_right", "theme_override_constants/margin_bottom"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0, 1073741824, 0, 9, 8, -1, 8, 10, 6, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 10, 20, 14, 21, 15, 22, 16, 23, 17, 24, 18, 25, 19, 26, 20, 27, 21, 28, 22, 29, 23, 0),
+"variants": [3, 15, 1.0, 1.0, 2, 2, true, 1, 15, 1.0, 1.0, 2, 2, SubResource("StyleBoxFlat_ypvxg"), 1, 15, 1.0, 1.0, 2, 2, 20, 20, 20, 20],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_cl2sk"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("BudgetScreen", "MarginContainer", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "theme_override_constants/margin_left", "theme_override_constants/margin_top", "theme_override_constants/margin_right", "theme_override_constants/margin_bottom", "script", "budget", "HBoxContainer", "HBoxContainer", "layout_mode", "theme_override_constants/separation", "alignment", "Topic Selector", "Panel", "layout_mode", "size_flags_horizontal", "theme_override_styles/panel", "MarginContainer", "MarginContainer", "layout_mode", "offset_right", "offset_bottom", "theme_override_constants/margin_left", "theme_override_constants/margin_top", "theme_override_constants/margin_right", "theme_override_constants/margin_bottom", "Button", "Button", "layout_mode", "text", "Details", "Panel", "layout_mode", "size_flags_horizontal", "theme_override_styles/panel", "MarginContainer", "MarginContainer", "layout_mode", "anchors_preset", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "theme_override_constants/margin_left", "theme_override_constants/margin_top", "theme_override_constants/margin_right", "theme_override_constants/margin_bottom", "HBoxContainer", "HBoxContainer", "layout_mode", "size_flags_vertical", "Button", "Button", "layout_mode", "theme_override_font_sizes/font_size", "text", "Control", "Control", "layout_mode", "size_flags_horizontal", "size_flags_vertical", "Button2", "Button", "layout_mode", "theme_override_font_sizes/font_size", "text", "Control2", "Control", "layout_mode", "size_flags_horizontal", "Button3", "Button", "layout_mode", "theme_override_font_sizes/font_size", "text"),
+"node_count": 13,
+"node_paths": [NodePath("."), NodePath("./HBoxContainer"), NodePath("./HBoxContainer/Topic Selector"), NodePath("./HBoxContainer/Topic Selector/MarginContainer"), NodePath("./HBoxContainer"), NodePath("./HBoxContainer/Details"), NodePath("./HBoxContainer/Details/MarginContainer"), NodePath("./HBoxContainer/Details/MarginContainer/HBoxContainer"), NodePath("./HBoxContainer/Details/MarginContainer/HBoxContainer"), NodePath("./HBoxContainer/Details/MarginContainer/HBoxContainer"), NodePath("./HBoxContainer/Details/MarginContainer/HBoxContainer"), NodePath("./HBoxContainer/Details/MarginContainer/HBoxContainer")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 0, 1073741824, 0, 14, 13, -1, 3, 15, 11, 16, 12, 17, 13, 0, 1073741825, 0, 19, 18, -1, 3, 20, 14, 21, 15, 22, 16, 0, 1073741826, 0, 24, 23, -1, 7, 25, 17, 26, 18, 27, 19, 28, 20, 29, 21, 30, 22, 31, 23, 0, 1073741827, 0, 33, 32, -1, 2, 34, 24, 35, 25, 0, 1073741828, 0, 37, 36, -1, 3, 38, 26, 39, 27, 40, 28, 0, 1073741829, 0, 42, 41, -1, 10, 43, 29, 44, 30, 45, 31, 46, 32, 47, 33, 48, 34, 49, 35, 50, 36, 51, 37, 52, 38, 0, 1073741830, 0, 54, 53, -1, 2, 55, 39, 56, 40, 0, 1073741831, 0, 58, 57, -1, 3, 59, 41, 60, 42, 61, 43, 0, 1073741832, 0, 63, 62, -1, 3, 64, 44, 65, 45, 66, 46, 0, 1073741833, 0, 68, 67, -1, 3, 69, 47, 70, 48, 71, 49, 0, 1073741834, 0, 73, 72, -1, 2, 74, 50, 75, 51, 0, 1073741835, 0, 77, 76, -1, 3, 78, 52, 79, 53, 80, 54, 0),
+"variants": [15, 1.0, 1.0, 2, 2, 20, 20, 20, 20, ExtResource("4_8wvkf"), ExtResource("5_8agd0"), 2, 25, 1, 2, 3, ExtResource("6_v8uso"), 0, 40.0, 40.0, 10, 5, 10, 5, 2, "Budget
+", 2, 3, ExtResource("6_v8uso"), 1, 15, 1.0, 1.0, 2, 2, 10, 10, 10, 5, 2, 0, 2, 10, "Summary", 2, 3, 4, 2, 10, "Transactions", 2, 3, 2, 10, "Accounts"],
+"version": 3
+}
 
 [node name="Budget Menu" type="Control"]
 layout_mode = 3
@@ -12,5 +43,106 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g7ci6")
-basicMenuTheme = ExtResource("1_t5ygj")
-BudgetScreen = ExtResource("3_iq2a1")
+basicMenuTheme = SubResource("PackedScene_qunvb")
+BudgetScreen = SubResource("PackedScene_cl2sk")
+
+[node name="Basic Menu Theme" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Basic Menu Theme"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ypvxg")
+
+[node name="BudgetScreen" type="MarginContainer" parent="Basic Menu Theme"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("4_8wvkf")
+budget = ExtResource("5_8agd0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Basic Menu Theme/BudgetScreen"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Topic Selector" type="Panel" parent="Basic Menu Theme/BudgetScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("6_v8uso")
+
+[node name="MarginContainer" type="MarginContainer" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Topic Selector"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Button" type="Button" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Topic Selector/MarginContainer"]
+layout_mode = 2
+text = "Budget
+"
+
+[node name="Details" type="Panel" parent="Basic Menu Theme/BudgetScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("6_v8uso")
+
+[node name="MarginContainer" type="MarginContainer" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Details"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Details/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Details/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Summary"
+
+[node name="Control" type="Control" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Details/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Details/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Transactions"
+
+[node name="Control2" type="Control" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Details/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="Basic Menu Theme/BudgetScreen/HBoxContainer/Details/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Accounts"
