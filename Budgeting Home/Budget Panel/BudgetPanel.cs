@@ -16,15 +16,30 @@ public partial class BudgetPanel : Panel
 	{
 		//Add initial data
 		BudgetMenu.currentBudget.AddIncome("Paycheck 1", 0);
+		BudgetMenu.currentBudget.AddCategory("Giving");
+		BudgetMenu.currentBudget.AddExpenseToCategory("Giving", "Tithes", 0, 0);
+		BudgetMenu.currentBudget.AddCategory("Savings");
+		BudgetMenu.currentBudget.AddCategory("Housing");
+		BudgetMenu.currentBudget.AddCategory("Transportation");
+		BudgetMenu.currentBudget.AddCategory("Food");
+		BudgetMenu.currentBudget.AddCategory("Personal");
+		BudgetMenu.currentBudget.AddCategory("Lifestyle");
+		BudgetMenu.currentBudget.AddCategory("Health");
+		BudgetMenu.currentBudget.AddCategory("Insurance");
+		
+
+		
 		
 		//Add a category
 		BudgetCategory budgetCategoryAsChild = (BudgetCategory) budgetCategory.Instantiate();
 		vBoxContainer.AddChild(budgetCategoryAsChild);
 		budgetCategoryAsChild.presetCategoryTitle.Text = "Income";
-		
 		//
 		SubCategory subcategory = budgetCategoryAsChild.GetNode<SubCategory>("MarginContainer/Category/Sub-Category");
 
+		Received recieved = (Received) recievedScene.Instantiate();
+		budgetCategoryAsChild.planned.AddSibling(recieved);
+		
 		subcategory.category = "Income";
 		foreach(var value in BudgetMenu.currentBudget.Incomes)
 		{
@@ -32,9 +47,12 @@ public partial class BudgetPanel : Panel
 			subcategory.plannedAmount.Text = value.Planned.ToString();
 			subcategory.updatedAmount.Text = value.Received.ToString();
 		}
+
+		foreach(ExpenseCategory value in BudgetMenu.currentBudget.Categories)
+		{
+			AddGroup(value, budgetCategoryAsChild);
+		}
 		
-		Received recieved = (Received) recievedScene.Instantiate();
-		budgetCategoryAsChild.planned.AddSibling(recieved);
 		
 		AddGroup addGroupAsChild = (AddGroup) addGroup1.Instantiate();
 		vBoxContainer.AddChild(addGroupAsChild);
@@ -69,5 +87,23 @@ public partial class BudgetPanel : Panel
 		Window child= (Window) newTransaction.Instantiate();
 		AddChild(child);
 		//newTransaction.Show();
+	}
+
+	public void AddGroup(ExpenseCategory category, BudgetCategory budgetCategory)
+	{
+		BudgetCategory childScene = (BudgetCategory) ResourceLoader.Load<PackedScene>(BudgetCategory.GetScenePath()).Instantiate();
+		budgetCategory.AddSibling(childScene);
+		childScene.presetCategoryTitle.Text = category.Name;
+		//BudgetMenu.currentBudget.AddExpenseToCategory(category.Name, "Label", 0, 0);
+		childScene.subCategory.category = category.Name;
+		foreach(Expense expense in category.Expenses)
+		{
+			childScene.subCategory.categorySubtitle.Text = expense.Name;
+			childScene.subCategory.plannedAmount.Text = expense.Planned.ToString();
+			childScene.subCategory.updatedAmount.Text = expense.Spent.ToString();
+
+			// Received recieved = (Received) recievedScene.Instantiate();
+			// budgetCategory.planned.AddSibling(recieved);
+		}
 	}
 }

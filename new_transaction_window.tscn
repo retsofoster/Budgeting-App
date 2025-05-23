@@ -26,12 +26,16 @@ LineEdit/colors/font_placeholder_color = Color(0.568973, 0.568973, 0.568973, 1)
 LineEdit/styles/focus = null
 LineEdit/styles/normal = ExtResource("3_kxu4r")
 
-[node name="Window" type="Window" node_paths=PackedStringArray("menuButton")]
+[node name="Window" type="Window" node_paths=PackedStringArray("menuButton", "Description", "IncomeAndExpenseSelector", "Amount", "Date")]
 auto_translate_mode = 1
 initial_position = 1
 size = Vector2i(500, 500)
 script = ExtResource("1_7io5a")
 menuButton = NodePath("New Transaction/MarginContainer/VBoxContainer/Body/MenuButton")
+Description = NodePath("New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer/Description")
+IncomeAndExpenseSelector = NodePath("New Transaction/MarginContainer/VBoxContainer/Header/Panel/HBoxContainer/Income&Expense Selector")
+Amount = NodePath("New Transaction/MarginContainer/VBoxContainer/Body/Amount")
+Date = NodePath("New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer/Date")
 
 [node name="New Transaction" type="Panel" parent="."]
 anchors_preset = 15
@@ -103,6 +107,8 @@ theme_override_constants/separation = 30
 [node name="Amount" type="LineEdit" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
 theme = SubResource("Theme_ckj8m")
+placeholder_text = "$0.00"
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
@@ -112,6 +118,7 @@ custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 theme = ExtResource("2_8i5f4")
 text = "PlaceHolder"
+alignment = 1
 expand_to_text_length = true
 
 [node name="Description" type="LineEdit" parent="New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer"]
@@ -119,6 +126,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_8i5f4")
 placeholder_text = "Where did you spend this money?"
+alignment = 1
 
 [node name="MenuButton" type="MenuButton" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
 custom_minimum_size = Vector2(0, 30)
@@ -126,6 +134,8 @@ layout_mode = 2
 theme = ExtResource("2_8i5f4")
 text = "Choose a Budget Item"
 flat = false
+item_count = 1
+popup/item_0/separator = true
 script = ExtResource("4_t1d0b")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="New Transaction/MarginContainer/VBoxContainer/Body"]
@@ -140,5 +150,6 @@ text = "Cancel"
 layout_mode = 2
 text = "Add Transaction"
 
+[connection signal="toggled" from="New Transaction/MarginContainer/VBoxContainer/Header/Panel/HBoxContainer/Income&Expense Selector" to="." method="OnIncomeAndExpenseSelectorPressed"]
 [connection signal="about_to_popup" from="New Transaction/MarginContainer/VBoxContainer/Body/MenuButton" to="." method="OnMenuButtonAboutToPopup"]
 [connection signal="pressed" from="New Transaction/MarginContainer/VBoxContainer/Body/HBoxContainer2/Cancel" to="." method="OnCancelPressed"]

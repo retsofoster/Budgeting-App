@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dewrj5c7dhtbx"]
+[gd_scene load_steps=9 format=3 uid="uid://dewrj5c7dhtbx"]
 
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_5tpfg"]
 [ext_resource type="Theme" uid="uid://c50a2v5brijr8" path="res://Themes/new_transaction.tres" id="2_fyltn"]
+[ext_resource type="Script" path="res://NewTransaction.cs" id="2_poua8"]
 [ext_resource type="StyleBox" uid="uid://bj7b8pwrwivk8" path="res://Themes/new_transaction_lineEdit.tres" id="3_q0p12"]
 [ext_resource type="Script" path="res://MenuButton.cs" id="4_nx5g7"]
 
@@ -32,6 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_5tpfg")
+script = ExtResource("2_poua8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -80,7 +82,6 @@ text = "Income"
 [node name="Income&Expense Selector" type="CheckButton" parent="MarginContainer/VBoxContainer/Header/Panel/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_fyltn")
-button_pressed = true
 
 [node name="Expense" type="Label" parent="MarginContainer/VBoxContainer/Header/Panel/HBoxContainer"]
 layout_mode = 2
@@ -134,3 +135,5 @@ text = "Cancel"
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/Body/HBoxContainer2"]
 layout_mode = 2
 text = "Add Expense"
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Header/Panel/HBoxContainer/Income&Expense Selector" to="." method="OnIncomeExpenseSelectorToggled"]

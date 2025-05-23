@@ -6,6 +6,10 @@ public partial class NewTransactionWindow : Window
 	public string category;
 
 	[Export] MenuButton menuButton;
+	[Export] LineEdit Description;
+	[Export] Button IncomeAndExpenseSelector;
+	[Export] LineEdit Amount;
+	[Export] LineEdit Date;
 	PopupMenu popupMenu; 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,6 +27,9 @@ public partial class NewTransactionWindow : Window
 			popupMenu.SetItemAsRadioCheckable(i, true);
 		}
 		popupMenu.IndexPressed += OnItemPressed;
+
+		Amount.PlaceholderText = "$0.00";
+		Date.Text = DateTime.Now.ToString("yyyy-MM-dd");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +42,26 @@ public partial class NewTransactionWindow : Window
 	}
 	public void OnMenuButtonAboutToPopup()
 	{
+		popupMenu.Clear();
+		if(IncomeAndExpenseSelector.ButtonPressed)
+		{
+			foreach(ExpenseCategory category in BudgetMenu.currentBudget.Categories)
+			{
+				popupMenu.AddSeparator(category.Name);
+				foreach(Expense expense in category.Expenses)
+				{
+					popupMenu.AddItem(expense.Name);
+				}
+			}
+		}
+		else
+		{
+			popupMenu.AddSeparator("Income");
+			foreach(Income income in BudgetMenu.currentBudget.Incomes)
+			{
+				popupMenu.AddItem(income.Name);
+			}
+		}
 	}
 
 	public void OnItemPressed(long index)
@@ -44,6 +71,7 @@ public partial class NewTransactionWindow : Window
 		UnCheckAllItems();
 		popupMenu.SetItemChecked(popupMenu.GetItemId((int)index), true);
 		GD.Print(category);
+		menuButton.Text = category;
 	}
 
 	public void UnCheckAllItems()
@@ -57,6 +85,10 @@ public partial class NewTransactionWindow : Window
 	public void OnAddTransactionPressed()
 	{
 		
+	}
+	public void OnIncomeAndExpenseSelectorPressed(bool Expense)
+	{
+		Description.PlaceholderText = Expense ? "Where did you spend this money?" : "Where did you earn this money?";
 	}
 
 }
