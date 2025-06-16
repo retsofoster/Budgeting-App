@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class Expense
 {
-    public string Name { get; set; }
-    public float Planned { get; set; }
-    public float Spent { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public float Planned { get; set; } = 0;
+    public float Spent { get; set; } = 0;
     public List<Transaction> transactions = new List<Transaction>();
 
     public Expense(string name, float planned, float spent)

@@ -17,7 +17,7 @@ public partial class BudgetPanel : Panel
 		//Add initial data
 		BudgetMenu.currentBudget.AddIncome("Paycheck 1", 0);
 		BudgetMenu.currentBudget.AddCategory("Giving");
-		BudgetMenu.currentBudget.AddExpenseToCategory("Giving", "Tithes", 0, 0);
+		BudgetMenu.currentBudget.AddExpenseToCategory("Giving", "Tithes", 10, 5);
 		BudgetMenu.currentBudget.AddCategory("Savings");
 		BudgetMenu.currentBudget.AddCategory("Housing");
 		BudgetMenu.currentBudget.AddCategory("Transportation");
@@ -45,7 +45,7 @@ public partial class BudgetPanel : Panel
 		{
 			subcategory.categorySubtitle.Text = value.Name;
 			subcategory.plannedAmount.Text = value.Planned.ToString();
-			subcategory.updatedAmount.Text = "10"; //value.Received.ToString();
+			subcategory.updatedAmount.Text = value.Received.ToString();
 		}
 
 		foreach(ExpenseCategory value in BudgetMenu.currentBudget.Categories)
@@ -98,7 +98,9 @@ public partial class BudgetPanel : Panel
 		childScene.planned.AddSibling(amount);
 		//BudgetMenu.currentBudget.AddExpenseToCategory(category.Name, "Label", 0, 0);
 		childScene.subCategory.category = category.Name;
-		foreach(Expense expense in category.Expenses)
+		childScene.subCategory.plannedAmount.Text = 0.ToString();
+		childScene.subCategory.updatedAmount.Text = 0.ToString();
+		foreach (Expense expense in category.Expenses)
 		{
 			childScene.subCategory.categorySubtitle.Text = expense.Name;
 			childScene.subCategory.plannedAmount.Text = expense.Planned.ToString();
