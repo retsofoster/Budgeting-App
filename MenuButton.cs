@@ -6,7 +6,7 @@ public partial class MenuButton : Godot.MenuButton
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GetPopup().AddItem("Income");
+		//GetPopup().AddItem("Income");
 		//this.GetPopup().Item
 	}
 

@@ -25,7 +25,7 @@ public partial class BudgetPanel : Panel
 		BudgetMenu.currentBudget.AddCategory("Personal");
 		BudgetMenu.currentBudget.AddCategory("Lifestyle");
 		BudgetMenu.currentBudget.AddCategory("Health");
-		BudgetMenu.currentBudget.AddCategory("Insurance");
+		BudgetMenu.currentBudget.AddCategory("InsuranceTest");
 		
 
 		
@@ -45,7 +45,7 @@ public partial class BudgetPanel : Panel
 		{
 			subcategory.categorySubtitle.Text = value.Name;
 			subcategory.plannedAmount.Text = value.Planned.ToString();
-			subcategory.updatedAmount.Text = value.Received.ToString();
+			subcategory.updatedAmount.Text = "10"; //value.Received.ToString();
 		}
 
 		foreach(ExpenseCategory value in BudgetMenu.currentBudget.Categories)
@@ -92,8 +92,10 @@ public partial class BudgetPanel : Panel
 	public void AddGroup(ExpenseCategory category, BudgetCategory budgetCategory)
 	{
 		BudgetCategory childScene = (BudgetCategory) ResourceLoader.Load<PackedScene>(BudgetCategory.GetScenePath()).Instantiate();
+		RemainingAmount amount = (RemainingAmount)ResourceLoader.Load<PackedScene>(RemainingAmount.GetScenePath()).Instantiate();
 		budgetCategory.AddSibling(childScene);
 		childScene.presetCategoryTitle.Text = category.Name;
+		childScene.planned.AddSibling(amount);
 		//BudgetMenu.currentBudget.AddExpenseToCategory(category.Name, "Label", 0, 0);
 		childScene.subCategory.category = category.Name;
 		foreach(Expense expense in category.Expenses)

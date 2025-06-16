@@ -12,13 +12,13 @@ public partial class BudgetCategory : Panel
 	[Export] public PackedScene subcategory;
 	[Export] public Label planned;
 
-	private Node parent; 
+	private Node parent;
 	//public string categoryTitle;
 	public int maxChildren = 4;
 	public string label;
 	Label amount;
 	public int spent = 0;
-	
+
 	public override void _Ready()
 	{
 		parent = GetNode(category.GetPath());
@@ -30,19 +30,21 @@ public partial class BudgetCategory : Panel
 	}
 
 	public static string GetScenePath()
-    {
-        return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/budget_category.tscn";
-    }
+	{
+		return "res://Budgeting Home/Budget Panel/Budget Body/Budget Category/budget_category.tscn";
+	}
 
 	public void OnAddSubCategoryPressed()
 	{
-		if(parent.GetChildCount() < maxChildren)
+		if (parent.GetChildCount() < maxChildren)
 		{
-			if(presetCategoryTitle.Text == "Income")
+			if (presetCategoryTitle.Text == "Income")
 			{
-				label = "Paycheck" +" " +(maxChildren - 2);
+				label = "Paycheck" + " " + (maxChildren - 2);
 				AddChildAtLocation(SubCategory.GetScenePath(), maxChildren, label);
-			}else{
+			}
+			else
+			{
 				label = "Label";
 				AddChildAtLocation(SubCategory.GetScenePath(), maxChildren, label);
 			}
@@ -56,7 +58,7 @@ public partial class BudgetCategory : Panel
 	}
 	public void AddChildAtLocation(string childPath, int max, string subtitle)
 	{
-		if(presetCategoryTitle.Text == "Income")
+		if (presetCategoryTitle.Text == "Income")
 		{
 			BudgetMenu.currentBudget.AddIncome(subtitle, 0f);
 		}
@@ -65,22 +67,28 @@ public partial class BudgetCategory : Panel
 			BudgetMenu.currentBudget.AddExpenseToCategory(presetCategoryTitle.Text, "Label", 0, 0);
 		}
 		int location;
-		SubCategory childScene = (SubCategory) ResourceLoader.Load<PackedScene>(childPath).Instantiate();
-		
+		SubCategory childScene = (SubCategory)ResourceLoader.Load<PackedScene>(childPath).Instantiate();
+
 		parent.AddChild(childScene);
 
 		childScene.categorySubtitle.Text = subtitle;
 		childScene.plannedAmount.Text = BudgetMenu.currentBudget.GetIncomeByName(subtitle).Planned.ToString();
 		childScene.updatedAmount.Text = BudgetMenu.currentBudget.GetIncomeByName(subtitle).Received.ToString();
-		
+
 		GD.Print(parent.GetChildCount());
-		
+
 		location = parent.GetChildCount() - 2;
-		childScene.Name = "Budget Item" +location.ToString();
+		childScene.Name = "Budget Item" + location.ToString();
 
 		parent.MoveChild(childScene, location);
-		
-		
+
+
 	}
+
+	// public void SetUpdatedAmount()
+	// {
+	// 	(SubCategory) childScene.updatedAmount.Text = expense.Spent.ToString();
+	// }
+	
 }
 
