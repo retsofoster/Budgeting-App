@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dewrj5c7dhtbx"]
+[gd_scene load_steps=9 format=3 uid="uid://cjvv1ilp0d4q4"]
 
 [ext_resource type="StyleBox" uid="uid://gotgko0itq" path="res://Styles/budget_menu.tres" id="1_5tpfg"]
 [ext_resource type="Theme" uid="uid://c50a2v5brijr8" path="res://Themes/new_transaction.tres" id="2_fyltn"]
@@ -26,7 +26,7 @@ LineEdit/colors/font_placeholder_color = Color(0.568973, 0.568973, 0.568973, 1)
 LineEdit/styles/focus = null
 LineEdit/styles/normal = ExtResource("3_q0p12")
 
-[node name="New Transaction" type="Panel"]
+[node name="New Transaction" type="Panel" node_paths=PackedStringArray("menuButton", "Description", "IncomeAndExpenseSelector", "Amount", "Date")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,6 +34,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_5tpfg")
 script = ExtResource("2_poua8")
+menuButton = NodePath("MarginContainer/VBoxContainer/Body/MenuButton")
+Description = NodePath("MarginContainer/VBoxContainer/Body/HBoxContainer/Description")
+IncomeAndExpenseSelector = NodePath("MarginContainer/VBoxContainer/Header/Panel/HBoxContainer/Income&Expense Selector")
+Amount = NodePath("MarginContainer/VBoxContainer/Body/Amount")
+Date = NodePath("MarginContainer/VBoxContainer/Body/HBoxContainer/Date")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -82,6 +87,7 @@ text = "Income"
 [node name="Income&Expense Selector" type="CheckButton" parent="MarginContainer/VBoxContainer/Header/Panel/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_fyltn")
+button_pressed = true
 
 [node name="Expense" type="Label" parent="MarginContainer/VBoxContainer/Header/Panel/HBoxContainer"]
 layout_mode = 2
@@ -96,7 +102,6 @@ theme_override_constants/separation = 30
 [node name="Amount" type="LineEdit" parent="MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
 theme = SubResource("Theme_ckj8m")
-text = "$0.00"
 placeholder_text = "$0.00"
 alignment = 1
 
@@ -107,14 +112,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 theme = ExtResource("2_fyltn")
-text = " PlaceHolder"
+text = "PlaceHolder"
+alignment = 1
 expand_to_text_length = true
 
 [node name="Description" type="LineEdit" parent="MarginContainer/VBoxContainer/Body/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_fyltn")
-placeholder_text = " Where did you spend this money?"
+placeholder_text = "Where did you spend this money?"
+alignment = 1
 
 [node name="MenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/Body"]
 custom_minimum_size = Vector2(0, 30)
@@ -122,18 +129,20 @@ layout_mode = 2
 theme = ExtResource("2_fyltn")
 text = "Choose a Budget Item"
 flat = false
+item_count = 1
+popup/item_0/separator = true
 script = ExtResource("4_nx5g7")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Body/HBoxContainer2"]
+[node name="Cancel" type="Button" parent="MarginContainer/VBoxContainer/Body/HBoxContainer2"]
 layout_mode = 2
 text = "Cancel"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/Body/HBoxContainer2"]
+[node name="Add Transaction" type="Button" parent="MarginContainer/VBoxContainer/Body/HBoxContainer2"]
 layout_mode = 2
-text = "Add Expense"
+text = "Add Transaction"
 
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Header/Panel/HBoxContainer/Income&Expense Selector" to="." method="OnIncomeExpenseSelectorToggled"]
+[connection signal="about_to_popup" from="MarginContainer/VBoxContainer/Body/MenuButton" to="." method="OnMenuButtonAboutToPopup"]
