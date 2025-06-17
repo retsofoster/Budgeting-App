@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://co0pkwmt1xvmc"]
+[gd_scene load_steps=6 format=3 uid="uid://co0pkwmt1xvmc"]
 
 [ext_resource type="Theme" uid="uid://iojd3eftyy6d" path="res://Themes/menu_button_theme.tres" id="1_s18jg"]
 [ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Header/MonthSelector.cs" id="2_sdqdb"]
+[ext_resource type="Script" path="res://Budgeting Home/Budget Panel/Budget Header/LeftToBudget.cs" id="3_1lukp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exxk6"]
 bg_color = Color(0.915453, 0.400855, 0.561799, 1)
 corner_detail = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_1t0w1"]
 
 [node name="Budget Header" type="MarginContainer"]
 theme_override_constants/margin_left = 10
@@ -42,11 +45,13 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = ">"
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Left To Budget" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
 text = "Test
 "
+label_settings = SubResource("LabelSettings_1t0w1")
+script = ExtResource("3_1lukp")
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/Previous Month" to="VBoxContainer/MarginContainer2/Month Selector" method="OnPreviousMonthPressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer2/HBoxContainer/Next Month" to="VBoxContainer/MarginContainer2/Month Selector" method="OnNextMonthPressed"]

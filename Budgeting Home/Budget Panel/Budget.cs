@@ -6,17 +6,24 @@ using Godot;
 
 public partial class Budget
 {
+    public event EventHandler<LeftToBudgetEventArgs> BudgetUpdated ;
     public List<Income> Incomes { get; private set; } = new List<Income>();
     public List<ExpenseCategory> Categories { get; private set; } = new List<ExpenseCategory>();
+
+    private void RaiseBudgetUpdated()
+    {
+        BudgetUpdated?.Invoke(this, new LeftToBudgetEventArgs(GetAmountLeftToBudget()));
+    }
 
     // Method to add an income source
     public void AddIncome(string name, float planned)
     {
         Incomes.Add(new Income(name, planned));
+        RaiseBudgetUpdated();
     }
 
-     // *** New Method to Update Planned Income ***
-    public void UpdatePlannedIncome(string name, float newPlannedAmount)
+    // *** New Method to Update Planned Income ***
+    public void UpdatePlannedIncomeAmount(string name, float newPlannedAmount)
     {
         var income = Incomes.FirstOrDefault(i => i.Name == name);
         if (income != null)
@@ -27,6 +34,7 @@ public partial class Budget
         {
             throw new Exception("Income not found.");
         }
+        RaiseBudgetUpdated();
     }
 
     public void PrintSummary()
@@ -63,8 +71,11 @@ public partial class Budget
         // Budget remaining after expenses
         summary.AppendLine($"\nOverall Remaining Budget: {GetBudgetRemaining()}");
 
+        summary.AppendLine($"\nLeft To Budget: {GetAmountLeftToBudget()}");
+
         // Print the summary
         GD.Print(summary.ToString());
+        RaiseBudgetUpdated();
     }
 
     // *** New Method to Update Planned Expense ***
@@ -85,11 +96,13 @@ public partial class Budget
         {
             throw new Exception("Expense not found.");
         }
+        RaiseBudgetUpdated();
     }
     // Method to add an expense category
     public void AddCategory(string name)
     {
         Categories.Add(new ExpenseCategory(new List<Expense>(), name));
+        RaiseBudgetUpdated();
     }
 
     // Method to add an expense to a category
@@ -102,6 +115,7 @@ public partial class Budget
         }
 
         category.AddExpense(new Expense(expenseName, planned, remaining));
+        RaiseBudgetUpdated();
     }
 
     // Get total planned income
@@ -147,5 +161,13 @@ public partial class Budget
     {
         var category = Categories.FirstOrDefault(c => c.Name == categoryName);
         return category?.Expenses.FirstOrDefault(e => e.Name == expenseName);
+    }
+
+    public float GetAmountLeftToBudget()
+    { 
+        float totalPlannedExpenses = GetTotalPlannedExpenses();
+        float totalPlannedIncome = GetTotalPlannedIncome();
+
+        return totalPlannedIncome - totalPlannedExpenses;
     }
 }

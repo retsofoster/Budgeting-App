@@ -17,7 +17,7 @@ public partial class BudgetPanel : Panel
 		//Add initial data
 		BudgetMenu.currentBudget.AddIncome("Paycheck 1", 0);
 		BudgetMenu.currentBudget.AddCategory("Giving");
-		BudgetMenu.currentBudget.AddExpenseToCategory("Giving", "Tithes", 10, 5);
+		BudgetMenu.currentBudget.AddExpenseToCategory("Giving", "Tithes", 0, 0);
 		BudgetMenu.currentBudget.AddCategory("Savings");
 		BudgetMenu.currentBudget.AddCategory("Housing");
 		BudgetMenu.currentBudget.AddCategory("Transportation");
@@ -26,37 +26,38 @@ public partial class BudgetPanel : Panel
 		BudgetMenu.currentBudget.AddCategory("Lifestyle");
 		BudgetMenu.currentBudget.AddCategory("Health");
 		BudgetMenu.currentBudget.AddCategory("InsuranceTest");
-		
 
-		
-		
+
+
+
 		//Add a category
-		BudgetCategory budgetCategoryAsChild = (BudgetCategory) budgetCategory.Instantiate();
+		BudgetCategory budgetCategoryAsChild = (BudgetCategory)budgetCategory.Instantiate();
 		vBoxContainer.AddChild(budgetCategoryAsChild);
 		budgetCategoryAsChild.presetCategoryTitle.Text = "Income";
 		//
 		SubCategory subcategory = budgetCategoryAsChild.GetNode<SubCategory>("MarginContainer/Category/Sub-Category");
 
-		Received recieved = (Received) recievedScene.Instantiate();
+		Received recieved = (Received)recievedScene.Instantiate();
 		budgetCategoryAsChild.planned.AddSibling(recieved);
-		
+
 		subcategory.category = "Income";
-		foreach(var value in BudgetMenu.currentBudget.Incomes)
+		foreach (var value in BudgetMenu.currentBudget.Incomes)
 		{
 			subcategory.categorySubtitle.Text = value.Name;
 			subcategory.plannedAmount.Text = value.Planned.ToString();
 			subcategory.updatedAmount.Text = value.Received.ToString();
 		}
 
-		foreach(ExpenseCategory value in BudgetMenu.currentBudget.Categories)
+		foreach (ExpenseCategory value in BudgetMenu.currentBudget.Categories)
 		{
 			AddGroup(value, budgetCategoryAsChild);
 		}
-		
-		
-		AddGroup addGroupAsChild = (AddGroup) addGroup1.Instantiate();
+
+
+		AddGroup addGroupAsChild = (AddGroup)addGroup1.Instantiate();
 		vBoxContainer.AddChild(addGroupAsChild);
 		addGroupAsChild.AddGroups += OnAddGroup;
+		//BudgetMenu.currentBudget.RaiseBudgetUpdated();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,9 +92,12 @@ public partial class BudgetPanel : Panel
 
 	public void AddGroup(ExpenseCategory category, BudgetCategory budgetCategory)
 	{
+		var parent = budgetCategory.GetParent();
 		BudgetCategory childScene = (BudgetCategory) ResourceLoader.Load<PackedScene>(BudgetCategory.GetScenePath()).Instantiate();
 		RemainingAmount amount = (RemainingAmount)ResourceLoader.Load<PackedScene>(RemainingAmount.GetScenePath()).Instantiate();
 		budgetCategory.AddSibling(childScene);
+		int num = parent.GetChildCount() - 1;
+		parent.MoveChild(childScene, num);
 		childScene.presetCategoryTitle.Text = category.Name;
 		childScene.planned.AddSibling(amount);
 		//BudgetMenu.currentBudget.AddExpenseToCategory(category.Name, "Label", 0, 0);

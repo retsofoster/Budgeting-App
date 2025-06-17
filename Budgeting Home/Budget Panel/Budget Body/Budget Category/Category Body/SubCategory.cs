@@ -26,11 +26,12 @@ public partial class SubCategory : HBoxContainer
 	{
 		Income income = BudgetMenu.currentBudget.GetIncomeByName(categorySubtitle.Text);
 		Expense expense = BudgetMenu.currentBudget.GetExpenseByName(category, categorySubtitle.Text);
-		if(income != null)
+		if (income != null)
 		{
 			income.UpdatePlanned(float.Parse(plannedAmount));
 			this.plannedAmount.Text = income.Planned.ToString();
-		}else
+		}
+		else
 		{
 			expense.UpdatePlanned(float.Parse(plannedAmount));
 			this.plannedAmount.Text = expense.Planned.ToString();
